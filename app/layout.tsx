@@ -26,7 +26,9 @@ export default function RootLayout({
         />
       </head>
       <link rel="icon" href="/favicon.png" type="image/png" />
-      <body className=" max-w-screen-sm mx-auto antialiased">{children}</body>
+      <body className=" max-w-screen-sm mx-auto antialiased overflow-hidden">
+        {children}
+      </body>
     </html>
   );
 }

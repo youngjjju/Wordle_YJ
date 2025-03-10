@@ -1,4 +1,4 @@
-import WordRow from "@/components/wordRow";
+import WordMatrix from "@/components/wordMatrix";
 
 export default function Home() {
   return (
@@ -6,8 +6,7 @@ export default function Home() {
       className="h-screen relative gap-5  w-full flex flex-col  bg-neutral-100
     "
     >
-      <WordRow />
-      <span></span>
+      <WordMatrix />
     </div>
   );
 }

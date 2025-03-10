@@ -1,12 +1,27 @@
 "use client";
 import { useEffect, useState, useCallback } from "react";
 
-export default function WordRow() {
+import randomWordGenarator from "./randomWordGenerator";
+import WordBox from "./wordBox";
+
+const answer = randomWordGenarator();
+export const answerUpperCase = answer.toUpperCase();
+const answerArray = answerUpperCase.split("");
+
+export default function WordRow({
+  active,
+  winningGame,
+}: {
+  active: boolean;
+  winningGame: () => void;
+}) {
   const [word, setWord] = useState<string[]>(["", "", "", "", ""]);
   const [index, setIndex] = useState<number>(0);
+  const [joinedWord, setJoinedWord] = useState<string>("");
 
   const handleKeyDown = useCallback(
     (event: KeyboardEvent) => {
+      if (!active) return;
       if (event.key === "Backspace" && index > 0) {
         setIndex((prev) => prev - 1);
         setWord((prev) => {
@@ -21,9 +36,13 @@ export default function WordRow() {
           return newArray;
         });
         setIndex((prev) => prev + 1);
+      } else if (event.key === "Enter" && index === 5) {
+        if (joinedWord === answerUpperCase) {
+          winningGame();
+        }
       }
     },
-    [index]
+    [index, joinedWord, active]
   );
 
   useEffect(() => {
@@ -33,17 +52,17 @@ export default function WordRow() {
     };
   }, [handleKeyDown]);
 
+  useEffect(() => {
+    setJoinedWord(word.join(""));
+  }, [word]);
+
+  console.log({ word, index, joinedWord });
+
   return (
     <div className="w-full h-20 gap-2  flex justify-center items-center">
       {word.map((letter, index) => (
-        <div
-          key={index}
-          className="size-20 flex justify-center items-center bg-neutral-300 text-black"
-        >
-          {letter}
-        </div>
+        <WordBox key={index} index={index} letter={letter} />
       ))}
-      <button onClick={() => console.log({ word })}>이거</button>
     </div>
   );
 }
