@@ -1,22 +1,25 @@
 "use client";
 import { useEffect, useState, useCallback } from "react";
-
-
 import WordBox from "./wordBox";
+import { answerCheck } from "./answerCheck";
+
+interface WordRowProps {
+  active: boolean;
+  winningGame: () => void;
+  completeRow: () => void;
+  answer: string;
+  answerUpperCase: string;
+  answerArray: string[];
+}
 
 export default function WordRow({
   active,
   winningGame,
+  completeRow,
   answer,
-  answerUpperCase,
   answerArray,
-}: {
-  active: boolean;
-  winningGame: (joinedWord: string) => void;
-  answer: string;
-  answerUpperCase: string;
-  answerArray: string[];
-}) {
+  answerUpperCase,
+}: WordRowProps) {
   const [word, setWord] = useState<string[]>(["", "", "", "", ""]);
   const [index, setIndex] = useState<number>(0);
   const [joinedWord, setJoinedWord] = useState<string>("");
@@ -24,27 +27,20 @@ export default function WordRow({
   const handleKeyDown = useCallback(
     (event: KeyboardEvent) => {
       if (!active) return;
-      if (event.key === "Backspace" && index > 0) {
-        setIndex((prev) => prev - 1);
-        setWord((prev) => {
-          const newArray = [...prev];
-          newArray[index - 1] = "";
-          return newArray;
+      {
+        answerCheck({
+          setWord,
+          setIndex,
+          event,
+          joinedWord,
+          winningGame,
+          completeRow,
+          answerUpperCase,
+          index,
         });
-      } else if (event.key.length === 1 && index < 5) {
-        setWord((prev) => {
-          const newArray = [...prev];
-          newArray[index] = event.key.toUpperCase();
-          return newArray;
-        });
-        setIndex((prev) => prev + 1);
-      } else if (event.key === "Enter" && index === 5) {
-        if (joinedWord === answerUpperCase) {
-          winningGame(joinedWord);
-        }
       }
     },
-    [index, joinedWord, active, answerUpperCase, winningGame]
+    [index, joinedWord, active, answerUpperCase, winningGame, completeRow]
   );
 
   useEffect(() => {

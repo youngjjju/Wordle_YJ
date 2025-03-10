@@ -25,7 +25,7 @@ export default function Home() {
     "
     >
       <div className="flex justify-center items-center w-full text-3xl font-semibold h-40">
-        Wordle!
+        Wordle 💥
       </div>
       <WordMatrix
         answer={answer}

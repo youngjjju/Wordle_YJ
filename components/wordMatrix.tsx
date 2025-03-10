@@ -4,8 +4,6 @@ import WordRow from "./wordRow";
 
 import Link from "next/link";
 
-import words from "./fiveLengthWords";
-
 export default function WordMatrix({
   answer,
   answerUpperCase,
@@ -21,9 +19,9 @@ export default function WordMatrix({
   }
 
   const [focusedRow, setFocusedRow] = useState<number>(0);
-  const handleRowComplete = (id: number) => {
-    if (id < 5) {
-      setFocusedRow(id + 1);
+  const completeRow = () => {
+    if (focusedRow < 5) {
+      setFocusedRow(focusedRow + 1);
     }
   };
 
@@ -31,6 +29,7 @@ export default function WordMatrix({
     <>
       {[...Array(6)].map((_, i) => (
         <WordRow
+          completeRow={completeRow}
           answer={answer}
           answerArray={answerArray}
           answerUpperCase={answerUpperCase}
