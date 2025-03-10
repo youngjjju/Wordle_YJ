@@ -8,7 +8,7 @@ export default function WordBox({
   return (
     <div
       key={index}
-      className="size-20 flex text-2xl  justify-center items-center bg-neutral-300 text-black"
+      className="size-20 flex text-2xl rounded-md justify-center items-center bg-neutral-300 text-black"
     >
       {letter}
     </div>

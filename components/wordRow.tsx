@@ -1,19 +1,21 @@
 "use client";
 import { useEffect, useState, useCallback } from "react";
 
-import randomWordGenarator from "./randomWordGenerator";
-import WordBox from "./wordBox";
 
-const answer = randomWordGenarator();
-export const answerUpperCase = answer.toUpperCase();
-const answerArray = answerUpperCase.split("");
+import WordBox from "./wordBox";
 
 export default function WordRow({
   active,
   winningGame,
+  answer,
+  answerUpperCase,
+  answerArray,
 }: {
   active: boolean;
-  winningGame: () => void;
+  winningGame: (joinedWord: string) => void;
+  answer: string;
+  answerUpperCase: string;
+  answerArray: string[];
 }) {
   const [word, setWord] = useState<string[]>(["", "", "", "", ""]);
   const [index, setIndex] = useState<number>(0);
@@ -38,11 +40,11 @@ export default function WordRow({
         setIndex((prev) => prev + 1);
       } else if (event.key === "Enter" && index === 5) {
         if (joinedWord === answerUpperCase) {
-          winningGame();
+          winningGame(joinedWord);
         }
       }
     },
-    [index, joinedWord, active]
+    [index, joinedWord, active, answerUpperCase, winningGame]
   );
 
   useEffect(() => {

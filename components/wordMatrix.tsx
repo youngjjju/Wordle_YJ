@@ -1,12 +1,21 @@
 "use client";
 import { useState } from "react";
-import WordRow, { answerUpperCase } from "./wordRow";
+import WordRow from "./wordRow";
 
 import Link from "next/link";
 
-export default function WordMatrix() {
-  const [winning, setWinnging] = useState<boolean>(false);
+import words from "./fiveLengthWords";
 
+export default function WordMatrix({
+  answer,
+  answerUpperCase,
+  answerArray,
+}: {
+  answer: string;
+  answerUpperCase: string;
+  answerArray: string[];
+}) {
+  const [winning, setWinnging] = useState<boolean>(false);
   function winnginGame() {
     setWinnging(true);
   }
@@ -21,7 +30,14 @@ export default function WordMatrix() {
   return (
     <>
       {[...Array(6)].map((_, i) => (
-        <WordRow winningGame={winnginGame} key={i} active={focusedRow === i} />
+        <WordRow
+          answer={answer}
+          answerArray={answerArray}
+          answerUpperCase={answerUpperCase}
+          winningGame={winnginGame}
+          key={i}
+          active={focusedRow === i}
+        />
       ))}
       <div
         className={`w-full absolute h-full bg-slate-500 transition-all duration-1000 ease-out ${
@@ -30,15 +46,18 @@ export default function WordMatrix() {
             : "translate-x-[3000px] rotate-[540deg] -translate-y-[1000px] opacity-0"
         }`}
       >
-        <div className="pt-32 w-full h-16 flex justify-center items-center text-white text-5xl font-semibold">
+        <div className="w-full h-16 flex justify-center items-center text-white text-5xl font-semibold">
           성공하셨네요!
         </div>
         <Link
-          href={`https://en.dict.naver.com/#/search?query=${answerUpperCase}`}
-          className="w-full h-full justify-center items-center flex"
+          href={`https://en.dict.naver.com/#/search?query=${answer}`}
+          className="w-full justify-center items-center flex"
         >
           단어의 뜻이 궁금하다면?
         </Link>
+        <a href={`/`} className="w-full justify-center items-center flex">
+          다시 시작하기
+        </a>
       </div>
     </>
   );
