@@ -20,6 +20,7 @@ export default function Home() {
 
     fetchRandomWord();
   }, []);
+
   return (
     <div
       className="h-auto relative gap-0.5 w-full min-[455px]:w-[450px] pb-5 flex flex-col  rounded-2xl bg-neutral-100
