@@ -10,6 +10,8 @@ interface WordRowProps {
   answer: string;
   answerUpperCase: string;
   answerArray: string[];
+  valid: boolean;
+  setValid: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function WordRow({
@@ -18,6 +20,8 @@ export default function WordRow({
   completeRow,
   answerUpperCase,
   answerArray,
+  valid,
+  setValid,
 }: WordRowProps) {
   const [word, setWord] = useState<string[]>(["", "", "", "", ""]); // word가 사용자가 입력한 단어!
   const [index, setIndex] = useState<number>(0);
@@ -63,8 +67,9 @@ export default function WordRow({
           setYellow,
           green,
           setGreen,
-
           setCheck,
+          valid,
+          setValid,
         });
       }
     },
@@ -79,6 +84,8 @@ export default function WordRow({
       winningGame,
       completeRow,
       yellow,
+      valid,
+      setValid,
     ]
   );
 
