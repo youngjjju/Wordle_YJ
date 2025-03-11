@@ -23,7 +23,7 @@ export default function Home() {
 
   return (
     <div
-      className="h-auto relative gap-0.5 w-full min-[455px]:w-[450px] pb-5 flex flex-col  rounded-2xl bg-neutral-100
+      className="h-auto relative gap-0.5 w-full min-[455px]:w-[450px] pb-5 flex flex-col overflow-hidden  rounded-2xl bg-neutral-100
     "
     >
       <div className="flex justify-center items-end w-full text-[33px] md:text-4xl font-semibold h-[17%] pb-[5%]">
