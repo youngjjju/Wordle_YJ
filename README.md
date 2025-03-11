@@ -1,36 +1,18 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+https://wordle-yj.vercel.app/
+위의 주소에 이 웹사이트를 배포하여 놓았으니 혹여나 문제 있을 시 위 사이트로 접속해서 확인해주시면 감사하겠습니다.
 
-## Getting Started
+# 실행방법
 
-First, run the development server:
+- 코드를 vs code에서 여신 후에 터미널에 npm i를 입력해주세요.
+- 이후, npm run dev를 입력하시고 안내되는 링크로 들어가시면 웹사이트를 보실 수 있습니다.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+# 간단한 요약
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- vercel을 통해서 서버리스 웹사이트를 만들었습니다.
+- 랜덤으로 주어지는 단어만 서버로부터 API를 통해서 받아옵니다. 대부분은 클라이언트 사이드에서 실행됩니다.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# 소감
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- 이렇게 사용자와 상호작용이 많은 사이트를 처음 만들어봅니다. 좋은 경험이었던 것 같습니다. 감사합니다.
+- 이 과제를 통해 useState를 어디에 선언해야 할지 감을 잡을 수 있게 된 거 같습니다. 이전까지는 아무 생각없이 선언을 했었는데, 그러면 안된다는 것을 크게 느꼈습니다.
+  (useState를 아무 생각없이 선언해서 가상 키보드에 색 초록색과 노란색으로 변하게 하는 기능을 구현하지 못했습니다 ㅠㅠ)
