@@ -33,7 +33,15 @@ export default function Home() {
         answerUpperCase={answerUpperCase}
         answerArray={answerArray}
       />
-      <Keyboard className="absolute bottom-10" />
+      <Keyboard className="absolute bottom-14" />
+      <div className="w-full h-16 flex justify-end">
+        <a
+          href="/ "
+          className="w-20 rounded-2xl ring-2 bottom-3 flex justify-center mr-5 h-12 items-center absolute"
+        >
+          RESTART
+        </a>
+      </div>
     </div>
   );
 }
