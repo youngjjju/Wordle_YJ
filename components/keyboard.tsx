@@ -9,48 +9,51 @@ export default function Keyboard({ className }: { className: string }) {
   useEffect(() => {
     const buttons = document.querySelectorAll(".key");
 
-    const handleClick = (event) => {
-      const key = event.target.getAttribute("data-key");
-      let keyCode, code, which;
+    const handleClick = (event: MouseEvent) => {
+      const key = (event.target as HTMLElement).getAttribute("data-key");
 
-      if (key === "ENTER") {
-        keyCode = 13;
-        code = "Enter";
-        which = 13;
-      } else if (key === "DEL") {
-        keyCode = 8; // Del가 아니라 Backspace임
-        code = "Backspace";
-        which = 8;
-      } else {
-        keyCode = key.toUpperCase().charCodeAt(0);
-        code = `Key${key.toUpperCase()}`;
-        which = key.toUpperCase().charCodeAt(0);
+      if (key) {
+        let keyCode, code, which;
+
+        if (key === "ENTER") {
+          keyCode = 13;
+          code = "Enter";
+          which = 13;
+        } else if (key === "DEL") {
+          keyCode = 8; // Del이 아니라 Backspace임
+          code = "Backspace";
+          which = 8;
+        } else {
+          keyCode = key.toUpperCase().charCodeAt(0);
+          code = `Key${key.toUpperCase()}`;
+          which = key.toUpperCase().charCodeAt(0);
+        }
+
+        const keyboardEvent = new KeyboardEvent("keydown", {
+          key: key === "ENTER" ? "Enter" : key === "DEL" ? "Backspace" : key,
+          code: code,
+          keyCode: keyCode,
+          which: which,
+          bubbles: true,
+          cancelable: true,
+        });
+
+        document.dispatchEvent(keyboardEvent);
       }
-
-      const keyboardEvent = new KeyboardEvent("keydown", {
-        key: key === "ENTER" ? "Enter" : key === "DEL" ? "Backspace" : key,
-        code: code,
-        keyCode: keyCode,
-        which: which,
-        bubbles: true,
-        cancelable: true,
-      });
-
-      document.dispatchEvent(keyboardEvent);
     };
 
     buttons.forEach((button) => {
-      button.addEventListener("click", handleClick);
+      button.addEventListener("click", handleClick as EventListener);
     });
 
     return () => {
       buttons.forEach((button) => {
-        button.removeEventListener("click", handleClick);
+        button.removeEventListener("click", handleClick as EventListener);
       });
     };
   }, []);
 
-  const renderKeyboardRow = (keys, last) => {
+  const renderKeyboardRow = (keys: string[], last: boolean) => {
     return keys.map((key) => (
       <button
         key={key}

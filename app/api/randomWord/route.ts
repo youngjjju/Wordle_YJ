@@ -1,9 +1,4 @@
-import words from "@/components/fiveLengthWords";
-
-export function randomWordGenarator() {
-  const randomIndex = Math.floor(Math.random() * words.words.length);
-  return words.words[randomIndex];
-}
+import { randomWordGenarator } from "@/components/randomWordGenarator";
 
 export async function GET() {
   const randomWord = randomWordGenarator();
