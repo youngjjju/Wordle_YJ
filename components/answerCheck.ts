@@ -40,7 +40,6 @@ export async function answerCheck({
   setYellow,
   green,
   setGreen,
-  valid,
   setValid,
   setCheck,
 }: AnswerCheckProps) {
@@ -63,7 +62,7 @@ export async function answerCheck({
       winningGame();
     } else {
       const joinedWord = word.join("");
-      console.log(joinedWord);
+
       const validChecked = await wordValidation(joinedWord);
       if (validChecked === false) {
         setValid(false);

@@ -52,7 +52,7 @@ export default function WordMatrix({
       {/** 단어가 유효하지 않을 시 보여주는 화면 */}
       {/** 성공 시에 보여주는 화면 */}
       <div
-        className={`w-full absolute h-full bg-slate-500 transition-all text-white  rounded-3xl duration-1000 ease-out ${
+        className={`w-full absolute h-full z-10 bg-slate-500 transition-all text-white  rounded-3xl duration-1000 ease-out ${
           winning
             ? "translate-x-0 translate-y-0 rotate-0 opacity-100"
             : "translate-x-[3000px] rotate-[540deg] -translate-y-[1000px] opacity-0"
@@ -78,7 +78,7 @@ export default function WordMatrix({
       </div>
       {/** 실패 시에 보여주는 화면 */}
       <div
-        className={`w-full absolute h-full rounded-3xl bg-gray-800 transition-all  text-white duration-1000 ease-out ${
+        className={`w-full absolute h-full z-10 rounded-3xl bg-gray-800 transition-all  text-white duration-1000 ease-out ${
           lossing
             ? "translate-x-0 translate-y-0 rotate-0 opacity-100"
             : "translate-x-[3000px] rotate-[540deg] -translate-y-[1000px] opacity-0"

@@ -1,4 +1,5 @@
 "use client";
+import Keyboard from "@/components/keyboard";
 import WordMatrix from "@/components/wordMatrix";
 import { useEffect, useState } from "react";
 
@@ -21,17 +22,18 @@ export default function Home() {
   }, []);
   return (
     <div
-      className="h-screen relative gap-0.5  w-full flex flex-col  bg-neutral-100
+      className="h-screen relative gap-0.5 w-full flex flex-col  rounded-2xl bg-neutral-100
     "
     >
       <div className="flex justify-center items-end w-full text-5xl font-semibold h-44 pb-12">
-        WORDLE 🕵️‍♂️
+        {`Let's Wordle!`} 🕵️‍♂️
       </div>
       <WordMatrix
         answer={answer}
         answerUpperCase={answerUpperCase}
         answerArray={answerArray}
       />
+      <Keyboard className="absolute bottom-10" />
     </div>
   );
 }

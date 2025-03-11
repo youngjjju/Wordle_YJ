@@ -13,9 +13,7 @@ export default function WordBox({
   yellow: boolean;
   check: boolean;
 }) {
-  useEffect(() => {
-    console.log("yellow: ", yellow);
-  }, [yellow]);
+  useEffect(() => {}, [yellow]);
   return (
     <div
       key={index}
@@ -23,7 +21,7 @@ export default function WordBox({
         green ? " bg-green-500" : "bg-neutral-300"
       }
       ${check && !green && !yellow ? "bg-neutral-600" : ""}
-      ${yellow ? " bg-yellow-500" : ""}`}
+      ${yellow && !green ? " bg-yellow-500" : ""}`}
     >
       {letter}
     </div>
