@@ -66,7 +66,7 @@ export async function answerCheck({
       const validChecked = await wordValidation(joinedWord);
       if (validChecked === false) {
         setValid(false);
-        alert("올바른 단어를 입력해주세요.");
+        alert("유효하지 않은 단어입니다!");
         return;
       }
       const updatedGreen = showingGreen({ word, answerArray, green }); // OK

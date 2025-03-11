@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { useEffect } from "react";
-import { keyboardColor } from "./keyboardColor";
+
 
 export default function Keyboard({ className }: { className: string }) {
   const topKeyboard = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
@@ -56,20 +56,10 @@ export default function Keyboard({ className }: { className: string }) {
 
   const renderKeyboardRow = (keys: string[], last: boolean) => {
     return keys.map((key) => {
-      const color = keyboardColor[key] || {
-        black: false,
-        yellow: false,
-        green: false,
-      };
-
       return (
         <button
           key={key}
-          className={`key flex justify-center text-lg w-[11%] rounded-lg h-full items-center sm:text-2xl bg-neutral-400 ${
-            color.black ? "bg-neutral-600" : ""
-          } ${color.yellow ? "bg-yellow-500" : ""} ${
-            color.green ? "bg-green-500" : ""
-          } ${
+          className={`key flex justify-center text-lg w-[11%] rounded-lg h-full items-center sm:text-2xl  ${
             last
               ? "last:w-[13%] first:w-[13%] first:text-[11px] last:text-[16px]"
               : ""
