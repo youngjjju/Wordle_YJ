@@ -16,19 +16,40 @@ export default function WordRow({
   active,
   winningGame,
   completeRow,
-  answer,
-  answerArray,
   answerUpperCase,
+  answerArray,
 }: WordRowProps) {
-  const [word, setWord] = useState<string[]>(["", "", "", "", ""]);
+  const [word, setWord] = useState<string[]>(["", "", "", "", ""]); // word가 사용자가 입력한 단어!
   const [index, setIndex] = useState<number>(0);
   const [joinedWord, setJoinedWord] = useState<string>("");
+  const [yellow, setYellow] = useState<boolean[]>([
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]); // 위치는 다른데 있긴 하면 yellow true
+  const [green, setGreen] = useState<boolean[]>([
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]); // 위치랑 값까지 같으면 green true
+  const [ckeck, setCheck] = useState<boolean[]>([
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
 
   const handleKeyDown = useCallback(
     (event: KeyboardEvent) => {
       if (!active) return;
       {
         answerCheck({
+          word,
           setWord,
           setIndex,
           event,
@@ -36,11 +57,29 @@ export default function WordRow({
           winningGame,
           completeRow,
           answerUpperCase,
+          answerArray,
           index,
+          yellow,
+          setYellow,
+          green,
+          setGreen,
+
+          setCheck,
         });
       }
     },
-    [index, joinedWord, active, answerUpperCase, winningGame, completeRow]
+    [
+      index,
+      joinedWord,
+      green,
+      answerArray,
+      word,
+      active,
+      answerUpperCase,
+      winningGame,
+      completeRow,
+      yellow,
+    ]
   );
 
   useEffect(() => {
@@ -54,12 +93,17 @@ export default function WordRow({
     setJoinedWord(word.join(""));
   }, [word]);
 
-  console.log({ word, index, joinedWord });
-
   return (
-    <div className="w-full h-20 gap-2  flex justify-center items-center">
+    <div className="w-full h-[74px] gap-2 flex justify-center items-center">
       {word.map((letter, index) => (
-        <WordBox key={index} index={index} letter={letter} />
+        <WordBox
+          key={index}
+          index={index}
+          letter={letter}
+          green={green[index]}
+          yellow={yellow[index]}
+          check={ckeck[index]}
+        />
       ))}
     </div>
   );

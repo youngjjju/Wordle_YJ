@@ -21,11 +21,11 @@ export default function Home() {
   }, []);
   return (
     <div
-      className="h-screen relative gap-5  w-full flex flex-col  bg-neutral-100
+      className="h-screen relative gap-0.5  w-full flex flex-col  bg-neutral-100
     "
     >
-      <div className="flex justify-center items-center w-full text-3xl font-semibold h-40">
-        Wordle 💥
+      <div className="flex justify-center items-end w-full text-5xl font-semibold h-44 pb-12">
+        WORDLE 💥
       </div>
       <WordMatrix
         answer={answer}

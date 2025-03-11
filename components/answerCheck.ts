@@ -1,4 +1,11 @@
+// 코드 더러움 주의
+
+import { showingGreen } from "./showingGreen";
+import { showingYellow } from "./showingYellow";
+
+// 엔터를 눌렀을 때, answerArray와 word의 index와 값이 같으면 초록색, 값만 같으면 노란색
 interface AnswerCheckProps {
+  word: string[];
   setWord: React.Dispatch<React.SetStateAction<string[]>>;
   setIndex: React.Dispatch<React.SetStateAction<number>>;
   event: KeyboardEvent;
@@ -6,10 +13,18 @@ interface AnswerCheckProps {
   winningGame: () => void;
   completeRow: () => void;
   answerUpperCase: string;
+  answerArray: string[];
   index: number;
+  yellow: boolean[];
+  setYellow: React.Dispatch<React.SetStateAction<boolean[]>>;
+  green: boolean[];
+  setGreen: React.Dispatch<React.SetStateAction<boolean[]>>;
+
+  setCheck: React.Dispatch<React.SetStateAction<boolean[]>>;
 }
 
 export function answerCheck({
+  word,
   setWord,
   setIndex,
   event,
@@ -17,7 +32,14 @@ export function answerCheck({
   winningGame,
   completeRow,
   answerUpperCase,
+  answerArray,
   index,
+  yellow,
+  setYellow,
+  green,
+  setGreen,
+
+  setCheck,
 }: AnswerCheckProps) {
   if (event.key === "Backspace" && index > 0) {
     setIndex((prev) => prev - 1);
@@ -37,6 +59,11 @@ export function answerCheck({
     if (joinedWord === answerUpperCase) {
       winningGame();
     } else {
+      const updatedGreen = showingGreen({ word, answerArray, green }); // OK
+      const updatedYellow = showingYellow({ word, answerArray, yellow }); // OK
+      setCheck([true, true, true, true, true]);
+      setGreen(updatedGreen);
+      setYellow(updatedYellow);
       completeRow();
     }
   }
