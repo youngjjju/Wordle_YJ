@@ -59,9 +59,9 @@ export default function Keyboard({ className }: { className: string }) {
       return (
         <button
           key={key}
-          className={`key flex justify-center text-lg w-[11%] rounded-lg h-full items-center sm:text-2xl  ${
+          className={`key flex justify-center text-lg bg-neutral-200 shadow-md  w-[11%] rounded-lg h-full items-center sm:text-2xl  ${
             last
-              ? "last:w-[13%] first:w-[13%] first:text-[11px] last:text-[16px]"
+              ? "last:w-[13%]  first:w-[13%] first:text-[11px] last:text-[16px]"
               : ""
           }`}
           data-key={key}
