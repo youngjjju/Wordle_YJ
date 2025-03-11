@@ -53,9 +53,7 @@ export default function WordMatrix({
       {/** 성공 시에 보여주는 화면 */}
       <div
         className={`w-full absolute h-full z-10 bg-slate-500 transition-all text-white  rounded-3xl duration-1000 ease-out ${
-          winning
-            ? "translate-x-0 translate-y-0 rotate-0 opacity-100"
-            : "translate-x-[3000px] rotate-[540deg] -translate-y-[1000px] opacity-0"
+          winning ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       >
         <div className="w-full h-3/5 flex gap-5 flex-col justify-center items-center  text-5xl font-semibold">
@@ -79,9 +77,7 @@ export default function WordMatrix({
       {/** 실패 시에 보여주는 화면 */}
       <div
         className={`w-full absolute h-full z-10 rounded-3xl bg-gray-800 transition-all  text-white duration-1000 ease-out ${
-          lossing
-            ? "translate-x-0 translate-y-0 rotate-0 opacity-100"
-            : "translate-x-[3000px] rotate-[540deg] -translate-y-[1000px] opacity-0"
+          lossing ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       >
         <div className="w-full h-3/5 flex gap-5 flex-col justify-center items-center  text-5xl font-semibold">

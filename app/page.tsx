@@ -22,10 +22,10 @@ export default function Home() {
   }, []);
   return (
     <div
-      className="h-screen relative gap-0.5 w-full flex flex-col  rounded-2xl bg-neutral-100
+      className="h-auto relative gap-0.5 w-full min-[455px]:w-[450px] pb-5 flex flex-col  rounded-2xl bg-neutral-100
     "
     >
-      <div className="flex justify-center items-end w-full text-5xl font-semibold h-44 pb-12">
+      <div className="flex justify-center items-end w-full text-[33px] md:text-4xl font-semibold h-[17%] pb-[5%]">
         {`Let's Wordle!`} 🕵️‍♂️
       </div>
       <WordMatrix
@@ -33,11 +33,11 @@ export default function Home() {
         answerUpperCase={answerUpperCase}
         answerArray={answerArray}
       />
-      <Keyboard className="absolute bottom-14" />
-      <div className="w-full h-16 flex justify-end">
+      <Keyboard className="" />
+      <div className="w-full h-[5%] flex justify-end">
         <a
           href="/ "
-          className="w-20 rounded-2xl ring-2 bottom-3 flex justify-center mr-5 h-12 items-center absolute"
+          className="w-20 rounded-2xl ring-2 bottom-3 flex justify-center mr-5 h-full items-center "
         >
           RESTART
         </a>

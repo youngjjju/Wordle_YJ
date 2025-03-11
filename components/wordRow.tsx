@@ -101,7 +101,7 @@ export default function WordRow({
   }, [word]);
 
   return (
-    <div className="w-full h-[74px] gap-2 flex justify-center items-center">
+    <div className="w-full my-1 h-[9%] gap-2 flex justify-center items-center">
       {word.map((letter, index) => (
         <WordBox
           key={index}

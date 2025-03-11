@@ -17,7 +17,7 @@ export default function WordBox({
   return (
     <div
       key={index}
-      className={`size-16 flex text-2xl rounded-md justify-center items-center transition-colors duration-500  text-black ${
+      className={`h-full w-[16%] flex text-xl md:text-2xl rounded-md justify-center items-center transition-colors duration-500  text-black ${
         green ? " bg-green-500" : "bg-neutral-300"
       }
       ${check && !green && !yellow ? "bg-neutral-600" : ""}

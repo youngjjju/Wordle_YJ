@@ -57,8 +57,10 @@ export default function Keyboard({ className }: { className: string }) {
     return keys.map((key) => (
       <button
         key={key}
-        className={`key flex justify-center w-10 rounded-lg h-16 items-center text-2xl bg-neutral-500 ${
-          last ? "last:w-16 first:w-16 first:text-xl last:text-xl" : ""
+        className={`key flex justify-center text-lg w-[11%] rounded-lg h-full items-center sm:text-2xl bg-neutral-500 ${
+          last
+            ? "last:w-[13%] first:w-[13%]  first:text-[11px] last:text-[16px]"
+            : ""
         }`}
         data-key={key}
       >
@@ -71,15 +73,15 @@ export default function Keyboard({ className }: { className: string }) {
     <div
       className={`${cn(
         className
-      )} w-full p-5 h-auto flex flex-col gap-2 justify-center items-center`}
+      )} w-full p-3  flex flex-col gap-2 h-[30%] justify-center items-center`}
     >
-      <div className="w-full h-auto flex justify-center gap-2">
+      <div className="w-full h-1/3 flex justify-center gap-1">
         {renderKeyboardRow(topKeyboard, false)}
       </div>
-      <div className="w-full h-auto flex justify-center gap-2">
+      <div className="w-full h-1/3 flex justify-center gap-1">
         {renderKeyboardRow(middleKeyboard, false)}
       </div>
-      <div className="w-full h-auto flex justify-center gap-2">
+      <div className="w-full h-1/3 flex justify-center gap-1">
         {renderKeyboardRow(bottomKeyboard, true)}
       </div>
     </div>
